@@ -1,3 +1,17 @@
+<?php
+include_once "scramblerfunction.php";
+$task = "encode";
+if (isset($_GET['task']) && $_GET['task'] != '') {
+    $task = $_GET['task'];
+}
+$key  = "abcdefghijklmnopqrstuvwxyz1234567890";
+if ('key' == $task) {
+    $key_original = str_split($key);
+    shuffle($key_original);
+    $key = join('' . $key_original);
+}
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -11,18 +25,19 @@
 
     <title>Data Scrambler</title>
 </head>
+
 <body>
     <div class="row offset-3 mt-5">
         <h1>Data Scrambler</h1>
         <p class="mt-2">Use This Application Scramble Your data</p>
         <div class="col-md-8">
-            <a href="" class="btn btn-success">Encode</a>
-            <a href="" class="btn btn-success">Decode</a>
-            <a href="" class="btn btn-success">Generate Key</a>
+            <a href="/scramblerfunction.php?task=encode" class="btn btn-success">Encode</a>
+            <a href="/scramblerfunction.php?task=encode" class="btn btn-success">Decode</a>
+            <a href="/scramblerfunction.php?task=encode" class="btn btn-success">Generate Key</a>
         </div>
         <div class="col-md-8 mt-3">
             <label for="">Key</label>
-            <input class="form-control" type="text">
+            <input class="form-control" type="text" <?php displayKey($key) ?>>
         </div>
         <div class="col-md-8 mt-3">
             <label for="">Data</label>
