@@ -1,9 +1,8 @@
 <?php
 
-function displayKey ($key)
+function displayKey($key)
 {
-
-printf(" value = '%s'" . $key);
-
+    var_dump($key);
+    printf(" value = '%s' ", $key);
+  
 }
-?>

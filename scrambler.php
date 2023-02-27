@@ -4,11 +4,11 @@ $task = "encode";
 if (isset($_GET['task']) && $_GET['task'] != '') {
     $task = $_GET['task'];
 }
-$key  = "abcdefghijklmnopqrstuvwxyz1234567890";
+$key  = 'abcdefghijklmnopqrstuvwxyz1234567890';
 if ('key' == $task) {
     $key_original = str_split($key);
     shuffle($key_original);
-    $key = join('' . $key_original);
+    $key = join(" ", $key_original);
 }
 ?>
 
@@ -32,32 +32,34 @@ if ('key' == $task) {
         <p class="mt-2">Use This Application Scramble Your data</p>
         <div class="col-md-8">
             <a href="/scramblerfunction.php?task=encode" class="btn btn-success">Encode</a>
-            <a href="/scramblerfunction.php?task=encode" class="btn btn-success">Decode</a>
-            <a href="/scramblerfunction.php?task=encode" class="btn btn-success">Generate Key</a>
+            <a href="/scramblerfunction.php?task=decode" class="btn btn-success">Decode</a>
+            <a href="/ostad_php_project/DataScramblerProject/scrambler.php?task=key" class="btn btn-success">Generate Key</a>
         </div>
-        <div class="col-md-8 mt-3">
-            <label for="">Key</label>
-            <input class="form-control" type="text" <?php displayKey($key) ?>>
-        </div>
-        <div class="col-md-8 mt-3">
-            <label for="">Data</label>
-            <div class="form-floating">
-                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 150px"></textarea>
-                <label for="floatingTextarea2"></label>
+        <form action="" method="POST">
+            <div class="col-md-8 mt-3">
+                <label for="">Key</label>
+                <input class="form-control" type="text" name="key" id="key" <?php displayKey($key) ?>>
             </div>
-        </div>
-        <div class="col-md-8 mt-2">
-            <label for="">Result</label>
-            <div class="form-floating">
-                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 150px"></textarea>
-                <label for="floatingTextarea2"></label>
+            <div class="col-md-8 mt-3">
+                <label for="">Data</label>
+                <div class="form-floating">
+                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 150px"></textarea>
+                    <label for="floatingTextarea2"></label>
+                </div>
             </div>
-        </div>
+            <div class="col-md-8 mt-2">
+                <label for="">Result</label>
+                <div class="form-floating">
+                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 150px"></textarea>
+                    <label for="floatingTextarea2"></label>
+                </div>
+            </div>
 
-        <div class="col-md-8 mt-2">
-            <button type="button" class="btn btn-primary">Do It For Me</button>
-        </div>
+            <div class="col-md-8 mt-2">
+                <button type="button" class="btn btn-primary">Do It For Me</button>
+            </div>
     </div>
+    </form>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
