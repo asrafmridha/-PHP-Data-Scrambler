@@ -11,6 +11,8 @@ if ('key' == $task) {
     $key_original = str_split($key);
     shuffle($key_original);
     $key = join(" ", $key_original);
+} elseif (isset($_POST['key'])) {
+    $key=$_POST['key'];
 }
 ?>
 
