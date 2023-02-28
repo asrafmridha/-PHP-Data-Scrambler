@@ -23,6 +23,7 @@ if ('encode' == $task) {
 }
 ?>
 
+
 <!doctype html>
 <html lang="en">
 
@@ -43,7 +44,7 @@ if ('encode' == $task) {
         <p class="mt-2">Use This Application Scramble Your data</p>
         <div class="col-md-8">
             <a href="/scramblerfunction.php?task=encode" class="btn btn-success">Encode</a>
-            <a href="/scramblerfunction.php?task=decode" class="btn btn-success">Decode</a>
+            <a href="/ostad_php_project/DataScramblerProject/scrambler.php?task=decode&key= <?php echo $key; ?>" class="btn btn-success">Decode</a>
             <a href="/ostad_php_project/DataScramblerProject/scrambler.php?task=key" class="btn btn-success">Generate Key</a>
         </div>
         <form action="/ostad_php_project/DataScramblerProject/scrambler.php" method="POST">
@@ -57,14 +58,12 @@ if ('encode' == $task) {
                     <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 150px" name="data"><?php if (isset($_POST['data'])) {
                                                                                                                                                     echo $_POST['data'];
                                                                                                                                                 } ?></textarea>
-                    <label for="floatingTextarea2"></label>
                 </div>
             </div>
             <div class="col-md-8 mt-2">
                 <label for="">Result</label>
                 <div class="form-floating">
                     <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 150px"><?php echo $scrambleData; ?></textarea>
-                    <label for="floatingTextarea2"></label>
                 </div>
             </div>
 
