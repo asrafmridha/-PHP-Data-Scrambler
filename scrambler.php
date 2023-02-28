@@ -1,9 +1,9 @@
 <?php
 include_once "scramblerfunction.php";
 $task = "encode";
-if (isset($_GET['task']) && $_GET['task'] != '') {
+if (isset($_REQUEST['task']) && $_REQUEST['task'] != '') {
 
-    $task = $_GET['task'];
+    $task = $_REQUEST['task'];
 }
 $key  = 'abcdefghijklmnopqrstuvwxyz1234567890';
 
@@ -12,7 +12,14 @@ if ('key' == $task) {
     shuffle($key_original);
     $key = join(" ", $key_original);
 } elseif (isset($_POST['key'])) {
-    $key=$_POST['key'];
+    $key = $_POST['key'];
+}
+$scrambleData = '';
+if ('encode' == $task) {
+    $data = $_POST['data'] ?? '';
+    if ($data != '') {
+        $scrambleData = scrambleData($data, $key);
+    }
 }
 ?>
 
@@ -47,14 +54,16 @@ if ('key' == $task) {
             <div class="col-md-8 mt-3">
                 <label for="">Data</label>
                 <div class="form-floating">
-                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 150px"></textarea>
+                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 150px" name="data"><?php if (isset($_POST['data'])) {
+                                                                                                                                                    echo $_POST['data'];
+                                                                                                                                                } ?></textarea>
                     <label for="floatingTextarea2"></label>
                 </div>
             </div>
             <div class="col-md-8 mt-2">
                 <label for="">Result</label>
                 <div class="form-floating">
-                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 150px"></textarea>
+                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 150px"><?php echo $scrambleData; ?></textarea>
                     <label for="floatingTextarea2"></label>
                 </div>
             </div>
